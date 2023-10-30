@@ -4,8 +4,8 @@ import { citiesRepositories } from "../repositories/cities.repositories.js";
 async function flightIsPossible(origin, destination, date) {
   const originCity = await citiesRepositories.findCityById(origin);
   const destinationCity = await citiesRepositories.findCityById(destination);
-  const splitData = date.split("-");
-  const flightDate = new Date(splitData[2], splitData[1] - 1, splitData[0]);
+  const splitDate = date.split("-");
+  const flightDate = new Date(splitDate[2], splitDate[1] - 1, splitDate[0]);
 
   if (!originCity)
     throw notFound("A cidade de origem não existe no banco de dados!");

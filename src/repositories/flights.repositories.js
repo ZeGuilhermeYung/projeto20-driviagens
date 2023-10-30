@@ -6,6 +6,13 @@ async function insertFlight(origin, destination, date) {
   return db.query(query, [origin, destination, date]);
 }
 
+async function findFlightById(flightId) {
+  const query = `SELECT * FROM flights WHERE id = $1;`;
+  const result = await db.query(query, [flightId]);
+  return result.rows[0];
+}
+
 export const flightRepositories = {
-  insertFlight
+  insertFlight,
+  findFlightById
 }
