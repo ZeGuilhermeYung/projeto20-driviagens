@@ -6,6 +6,6 @@ import postsRouter from "./flights.routes.js";
 const router = Router();
 
 router.use(passsengersRouter);
-router.use(postsRouter);
+router.use(citiesRouter);
 
 export default router;

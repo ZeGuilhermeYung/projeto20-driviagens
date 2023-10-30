@@ -1,15 +1,14 @@
 import { Router } from "express";
-import { validateAuth } from "../middlewares/auth.middlewares.js";
-import { createPost, changePost, removePost, getAllPosts } from "../controllers/posts.controllers.js";
+//import { createPost, changePost, removePost, getAllflights } from "../controllers/flights.controllers.js";
 import validateSchema from "../middlewares/validate.schema.js";
-import { postsSchemas, updatePostsSchemas } from "../schemas/posts.schemas.js";
+//import { flightsSchemas, updateflightsSchemas } from "../schemas/flights.schemas.js";
 
-const postsRouter = Router();
+const flightsRouter = Router();
 
-postsRouter.get('/timeline', validateAuth, getAllPosts );
-postsRouter.post('/timeline', validateAuth, validateSchema(postsSchemas), createPost);
-postsRouter.patch('/timeline', validateAuth, validateSchema(updatePostsSchemas), changePost);
-postsRouter.delete('/timeline', validateAuth, removePost);
+//flightsRouter.get('/flights', validateAuth, getAllflights );
+//flightsRouter.post('/flights', validateSchema(flightsSchemas));
+//flightsRouter.patch('/flights', validateAuth, validateSchema(updateflightsSchemas), changePost);
+//flightsRouter.delete('/flights', validateAuth, removePost);
 
 
-export default postsRouter;
+export default flightsRouter;
