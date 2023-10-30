@@ -11,7 +11,14 @@ async function findCity(name) {
   return result.rows[0];
 }
 
+async function findCityById(cityId) {
+  const query = `SELECT * FROM cities WHERE id = $1;`;
+  const result = await db.query(query, [cityId]);
+  return result.rows[0];
+}
+
 export const citiesRepositories = {
   insertCity,
-  findCity
+  findCity,
+  findCityById
 }

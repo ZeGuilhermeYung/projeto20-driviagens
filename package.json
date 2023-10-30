@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/ZeGuilhermeYung/projeto20-driviagens#readme",
   "dependencies": {
+    "@joi/date": "^2.1.0",
     "cors": "^2.8.5",
+    "dayjs": "^1.11.10",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "gitignore": "^0.7.0",

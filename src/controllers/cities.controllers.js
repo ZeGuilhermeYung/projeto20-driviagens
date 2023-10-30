@@ -1,4 +1,4 @@
-//import { citiesRepositories } from "../repositories/cities.repositories.js";
+import { citiesRepositories } from "../repositories/cities.repositories.js";
 import { cityExists } from "../services/cities.services.js";
 
 export async function postCity (req, res) {
@@ -6,6 +6,8 @@ export async function postCity (req, res) {
 
   try {
       await cityExists(name);
+
+      await citiesRepositories.insertCity(name);
 
       return res.sendStatus(201);
   } catch (error) {
