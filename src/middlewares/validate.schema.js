@@ -1,3 +1,5 @@
+import { unprocessableEntity } from "../errors/errors.js";
+
 function validateSchema (schema) {
   return (req, res, next) => {
     const validation = schema.validate (
@@ -6,8 +8,7 @@ function validateSchema (schema) {
     );
     if (validation.error) {
       const errors = validation.error.details.map((detail) => detail.message);
-      console.log(errors);
-      return res.status(422).send(errors);
+      throw unprocessableEntity(errors);
     }
     res.locals.body = req.body;
     next();
