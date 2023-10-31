@@ -3,7 +3,6 @@ import { flightRepositories } from "../repositories/flights.repositories.js";
 import { passengersRepositories } from "../repositories/passengers.repositories.js";
 
 async function checkPassengerFlight(passengerId, flightId) {
-  console.log("cheguei aqui")
   const passenger = await passengersRepositories.findPassengerById(passengerId);
   const flight = await flightRepositories.findFlightById(flightId);
 
