@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { conflictError, notFound, unprocessableEntity } from "../errors/errors.js";
 import { citiesRepositories } from "../repositories/cities.repositories.js";
 
@@ -17,4 +18,22 @@ async function flightIsPossible(origin, destination, date) {
     throw unprocessableEntity("a data não pode ser anterior que a data atual!");
 }
 
-export { flightIsPossible };
+async function mountFlights(allFlights, origin, destination) {
+  if (origin) {
+    allFlights = allFlights.
+      filter(flight => flight.origin === origin.toString());
+  }
+  if (destination) {
+    allFlights = allFlights.
+      filter(flight => flight.destination === destination.toString());
+  }
+  allFlights = allFlights.map(flight => (
+    {
+      ...flight,
+      date: dayjs(flight.date).format('DD-MM-YYYY')
+    }
+  ));
+  return allFlights;
+}
+
+export { flightIsPossible, mountFlights };
